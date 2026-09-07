@@ -3,45 +3,93 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Grace RE — Privacy Policy</title>
+  <title>animated ninepatch rect — godot addon</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <style>
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      max-width: 640px;
-      margin: 4rem auto;
-      padding: 0 1rem;
-      color: #222;
-      line-height: 1.7;
-    }
-    h1 { font-size: 1.6rem; }
-    small { color: #666; }
+    body { font-family: system-ui, sans-serif; line-height: 1.6; color: #2a2e33;
+           max-width: 680px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem;
+           background: #fafafa; }
+    a { color: #1758d6; }
+    code { background: #eef0f2; padding: .15em .4em; border-radius: 4px; font-size: .9em; }
+    pre { background: #1d2125; color: #d9dee3; padding: 1rem; border-radius: 6px;
+          overflow-x: auto; font-size: .85em; }
+    pre code { background: none; padding: 0; color: inherit; }
+    h1 { font-size: 1.5rem; display: flex; align-items: center; gap: .75rem; }
+    h2 { font-size: 1.1rem; margin-top: 2rem; }
+    header .badge { font-size: .8rem; color: #666; }
+    table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+    td, th { border: 1px solid #dcdcdc; padding: .4rem .6rem; text-align: left; vertical-align: top; }
+    th { background: #f0f0f0; }
+    footer { margin-top: 3rem; font-size: .8rem; color: #888; border-top: 1px solid #ddd; padding-top: 1rem; }
+    .pill { background: #e6f0ff; color: #1758d6; border-radius: 999px;
+            padding: .1rem .6rem; font-size: .75rem; }
   </style>
 </head>
 <body>
-  <h1>Grace RE — Privacy Policy</h1>
-  <p><small>Last updated September 2026</small></p>
 
-  <p>Grace RE uses Epic Online Services (EOS) to provide online features.
-     This policy describes what data is accessed and stored.</p>
+  <header>
+    <h1><img src="icon.svg" width="32" height="32" alt="nine patch icon" /> animated ninepatch rect</h1>
+    <p class="badge">a <a href="https://godotengine.org">godot</a> 4 addon · version 1.0 · author: grace re</p>
+  </header>
 
-  <h2>Data collected through EOS</h2>
-  <ul>
-    <li><strong>Epic Games display name</strong> — shown above your character in multiplayer lobbies.</li>
-    <li><strong>Epic Games friends list</strong> — used only for the in-game friends display; not stored or shared.</li>
-    <li><strong>Cloud-saved progression</strong> — bricks, level, and XP are stored in your Epic Player Data Storage so you can access your save across devices.</li>
-    <li><strong>Real-time position data</strong> — your in-world position is broadcast to other players in the shared lobby so everyone can see each other move.</li>
-  </ul>
+  <section>
+    <h2>what it is</h2>
+    <p>a <code>NinePatchRect</code> that plays a <code>SpriteFrames</code> atlas, swapping the
+    texture per frame while keeping the nine-patch slice intact. instead of a fixed texture,
+    the node shows a looping animation inside a stretchable frame — handy for animated
+    buttons, panels, and boxes that need to scale without distorting the corners.</p>
+  </section>
 
-  <p>None of the above data is collected, sold, or shared with third parties outside of what EOS provides.</p>
+  <section>
+    <h2>install</h2>
+    <pre><code>1. copy the addon into your project
+   res://addons/animated_nine_patch/
 
-  <h2>Epic Online Services</h2>
-  <p>All online features are powered by
-     <a href="https://www.epicgames.com/site/en-US/online-services-terms">Epic Online Services</a>.
-     For details on how Epic handles data, see the
-     <a href="https://www.epicgames.com/site/en-US/privacy-policy">Epic Games Privacy Policy</a>.</p>
+2. enable it in godot
+   project settings → plugins → animated ninepatch rect</code></pre>
+    <p>that adds <code>AnimatedNinePatchRect</code> to the node panel with the addon icon.</p>
+  </section>
 
-  <h2>Contact</h2>
-  <p>Questions about this policy? Reach out at
-     <a href="https://github.com/RowerStudios/grace-re/issues">github.com/RowerStudios/grace-re/issues</a>.</p>
+  <section>
+    <h2>usage</h2>
+    <pre><code>var panel = AnimatedNinePatchRect.new()
+add_child(panel)
+panel.sprite_frames = frames   # a SpriteFrames with your atlas
+panel.animation = "pulse"      # pick an animation
+panel.play("pulse")
+
+panel.animation_finished.connect(func(name):
+    print("done: ", name))
+</code></pre>
+    <p>exported properties make it work in the editor too — set <code>sprite_frames</code>,
+    pick <code>animation</code>, tick <code>autoplay</code>, done.</p>
+  </section>
+
+  <section>
+    <h2>api</h2>
+    <table>
+      <tr><th>exported</th><th>type</th><th>notes</th></tr>
+      <tr><td><code>sprite_frames</code></td><td>SpriteFrames</td><td>atlas with the frames</td></tr>
+      <tr><td><code>animation</code></td><td>StringName</td><td>active animation</td></tr>
+      <tr><td><code>autoplay</code></td><td>StringName</td><td>animation to start on ready</td></tr>
+      <tr><td><code>frame</code></td><td>int</td><td>current frame</td></tr>
+      <tr><td><code>playing</code></td><td>bool</td><td>play / pause</td></tr>
+      <tr><td><code>speed_scale</code></td><td>float</td><td>playback speed multiplier</td></tr>
+      <tr><th colspan="3">methods</th></tr>
+      <tr><td><code>play(name)</code></td><td colspan="2">start an animation from frame 0</td></tr>
+      <tr><td><code>stop()</code></td><td colspan="2">stop and reset to frame 0</td></tr>
+      <tr><td><code>pause()</code></td><td colspan="2">pause on the current frame</td></tr>
+      <tr><td><code>is_playing()</code></td><td colspan="2">is it running?</td></tr>
+      <tr><td><code>get_animation_list()</code></td><td colspan="2">names of all animations</td></tr>
+      <tr><th colspan="3">signals</th></tr>
+      <tr><td><code>animation_finished(name)</code></td><td colspan="2">fires when a non-looping animation ends</td></tr>
+    </table>
+  </section>
+
+  <footer>
+    <p>open source — source lives in the grace re repo on <a href="https://github.com/RowerStudios">github</a>.
+    <a href="policy.html">privacy policy</a>.</p>
+  </footer>
+
 </body>
 </html>
