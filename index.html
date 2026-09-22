@@ -1,94 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>animated ninepatch rect — godot addon</title>
-  <link rel="icon" href="icon.svg" type="image/svg+xml" />
-  <style>
-    body { font-family: system-ui, sans-serif; line-height: 1.6; color: #e6e6e6;
-           max-width: 680px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem;
-           background: #1d2125; }
-    a { color: #7fb2ff; }
-    code { background: #2d3136; padding: .15em .4em; border-radius: 4px; font-size: .9em; color: #e6e6e6; }
-    pre { background: #14161a; color: #d9dee3; padding: 1rem; border-radius: 6px;
-          overflow-x: auto; font-size: .85em; }
-    pre code { background: none; padding: 0; color: inherit; }
-    h1 { font-size: 1.5rem; display: flex; align-items: center; gap: .75rem; }
-    h2 { font-size: 1.1rem; margin-top: 2rem; }
-    header .badge { font-size: .8rem; color: #9aa2a8; }
-    table { border-collapse: collapse; width: 100%; font-size: .9rem; }
-    td, th { border: 1px solid #2d3136; padding: .4rem .6rem; text-align: left; vertical-align: top; }
-    th { background: #2d3136; color: #e6e6e6; }
-    footer { margin-top: 3rem; font-size: .8rem; color: #9aa2a8; border-top: 1px solid #2d3136; padding-top: 1rem; }
-    .pill { background: #2d3136; color: #7fb2ff; border-radius: 999px;
-            padding: .1rem .6rem; font-size: .75rem; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grace RE-Envisioned</title>
+    <meta name="description" content="Grace RE-Envisioned is an unofficial, from-scratch remake of the discontinued Roblox game Grace, built in Godot.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Maze&family=Rubik+Spray&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <header>
-    <h1><img src="icon.svg" width="32" height="32" alt="nine patch icon" /> animated ninepatch rect</h1>
-    <p class="badge">a <a href="https://godotengine.org">godot</a> 4 addon · version 1.0 · author: grace re</p>
-  </header>
+<header>
+    <nav>
+        <a href="https://github.com/RowerStudios/Grace-RE-Envisioned" target="_blank" rel="noopener" aria-label="GitHub" class="github">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.75 2.69 1.25 3.34.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18.92-.26 1.91-.38 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.4-2.69 5.37-5.25 5.65.41.36.78 1.06.78 2.14 0 1.55-.01 2.79-.01 3.17 0 .3.2.67.8.55A11.51 11.51 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <a href="https://discord.gg/2W5T6krjGd" target="_blank" rel="noopener" aria-label="Discord" class="discord">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.32 4.37a19.8 19.8 0 00-4.93-1.51 13.9 13.9 0 00-.64 1.28 18.3 18.3 0 00-5.5 0 12.4 12.4 0 00-.64-1.28 19.74 19.74 0 00-4.93 1.51C.53 9.19-.32 13.83.1 18.4a20.07 20.07 0 006.07 3.06c.48-.66.92-1.36 1.29-2.09a13.3 13.3 0 01-2.04-.98c.17-.12.34-.25.5-.38a14.2 14.2 0 0012.16 0c.16.13.33.26.5.38-.65.38-1.34.72-2.05.98.37.73.8 1.43 1.28 2.09a19.99 19.99 0 006.07-3.06c.5-5.25-.85-9.84-3.56-14.03zM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42c1.2 0 2.17 1.09 2.16 2.42 0 1.33-.96 2.42-2.16 2.42zm7.96 0c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42c1.2 0 2.17 1.09 2.16 2.42 0 1.33-.95 2.42-2.16 2.42z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@GamesRowerStudios" target="_blank" rel="noopener" aria-label="YouTube" class="youtube">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 00.5 6.19 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.81 3.02 3.02 0 002.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 002.12-2.14A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
+        </a>
+        <a href="https://rowerstudios.itch.io/grace-re" target="_blank" rel="noopener" aria-label="itch.io" class="itchio">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.137 2.41 2.466 2.41h.024c1.33 0 2.466-1.102 2.466-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.106 2.41 2.435 2.41C22.78 8.43 24 7.282 24 5.98V4.95c-.02-.62-2.082-2.99-3.13-3.612-3.253-.114-5.508-.134-8.87-.133-3.362 0-7.945.053-8.87.133zm6.376 6.477a2.74 2.74 0 0 1-.468.602c-.5.49-1.19.795-1.947.795a2.786 2.786 0 0 1-1.95-.795c-.182-.178-.32-.37-.446-.59-.127.222-.303.412-.486.59a2.788 2.788 0 0 1-1.95.795c-.092 0-.187-.025-.264-.052-.107 1.113-.152 2.176-.168 2.95v.005l-.006 1.167c.02 2.334-.23 7.564 1.03 8.85 1.952.454 5.545.662 9.15.663 3.605 0 7.198-.21 9.15-.664 1.26-1.284 1.01-6.514 1.03-8.848l-.006-1.167v-.004c-.016-.775-.06-1.838-.168-2.95-.077.026-.172.052-.263.052a2.788 2.788 0 0 1-1.95-.795c-.184-.178-.36-.368-.486-.59-.127.22-.265.412-.447.59a2.786 2.786 0 0 1-1.95.794c-.76 0-1.446-.303-1.948-.793a2.74 2.74 0 0 1-.468-.602 2.738 2.738 0 0 1-.463.602 2.787 2.787 0 0 1-1.95.794h-.16a2.787 2.787 0 0 1-1.95-.793 2.738 2.738 0 0 1-.464-.602zm-2.004 2.59v.002c.795.002 1.5 0 2.373.953.687-.072 1.406-.108 2.125-.107.72 0 1.438.035 2.125.107.873-.953 1.578-.95 2.372-.953.376 0 1.876 0 2.92 2.934l1.123 4.028c.832 2.995-.266 3.068-1.636 3.07-2.03-.075-3.156-1.55-3.156-3.025-1.124.184-2.436.276-3.748.277-1.312 0-2.624-.093-3.748-.277 0 1.475-1.125 2.95-3.156 3.026-1.37-.004-2.468-.077-1.636-3.072l1.122-4.027c1.045-2.934 2.545-2.934 2.92-2.934zM12 12.714c-.002.002-2.14 1.964-2.523 2.662l1.4-.056v1.22c0 .056.56.033 1.123.007.562.026 1.124.05 1.124-.008v-1.22l1.4.055C14.138 14.677 12 12.713 12 12.713z"/></svg>
+        </a>
+    </nav>
+    <h1>Grace RE-Envisioned</h1>
+</header>
 
-  <section>
-    <h2>what it is</h2>
-    <p>a <code>NinePatchRect</code> that plays a <code>SpriteFrames</code> atlas, swapping the
-    texture per frame while keeping the nine-patch slice intact. instead of a fixed texture,
-    the node shows a looping animation inside a stretchable frame — handy for animated
-    buttons, panels, and boxes that need to scale without distorting the corners.</p>
-  </section>
+<main>
+    <section>
+        <h2>What's our goal?</h2>
+        <p>Ever since Roblox Grace was <strong class="danger">discontinued</strong>, I had the feeling I could remake it in <strong class="brand">Godot</strong> — an open-source game engine. Some Grace players quit along the way, and some were waiting for a real alternative.</p>
+        <p>Grace hit its lowest player count of 700 just a week before September 2026. That kept me motivated to continue development, even after setting aside my other game, "Inferno."</p>
+        <p>Things have been going well so far, and I'm happy I started this project.</p>
+    </section>
 
-  <section>
-    <h2>install</h2>
-    <pre><code>1. copy the addon into your project
-   res://addons/animated_nine_patch/
+    <section>
+        <h2>On which devices will the game be released?</h2>
+        <p>We are focusing on <a href="https://itch.io">itch.io</a>, <a href="https://flatpak.org">Flatpak</a>, and <a href="https://github.com">GitHub</a> Releases.</p>
+        <p>Android users can use GitHub Releases or <a href="https://f-droid.org">F-Droid</a> (still working on that). For Windows, it's all handled by the launcher below.</p>
+    </section>
 
-2. enable it in godot
-   project settings → plugins → animated ninepatch rect</code></pre>
-    <p>that adds <code>AnimatedNinePatchRect</code> to the node panel with the addon icon.</p>
-  </section>
+    <section>
+        <h2>Launcher for Windows?</h2>
+        <p>Installing software on Windows is more tedious than on Linux (<a href="https://flatpak.org">Flatpak</a>) or Android, so we're making a launcher that downloads the binaries from GitHub Releases.</p>
+        <p>Releases are tagged with the sequence <code>0.Xv</code>, where X is the version number, and the launcher checks for new releases via web fetch.</p>
+        <p>The launcher isn't made with C++ — it's built entirely in <strong class="brand">Godot</strong>, which has good support for system calls.</p>
+    </section>
 
-  <section>
-    <h2>usage</h2>
-    <pre><code>var panel = AnimatedNinePatchRect.new()
-add_child(panel)
-panel.sprite_frames = frames   # a SpriteFrames with your atlas
-panel.animation = "pulse"      # pick an animation
-panel.play("pulse")
+    <section>
+        <h2>???</h2>
+        <p>COLLAB?</p>
+    </section>
+</main>
 
-panel.animation_finished.connect(func(name):
-    print("done: ", name))
-</code></pre>
-    <p>exported properties make it work in the editor too — set <code>sprite_frames</code>,
-    pick <code>animation</code>, tick <code>autoplay</code>, done.</p>
-  </section>
+<footer>
+    <p>Grace RE-Envisioned — unofficial fan project. Not affiliated with The Fartering Few or Roblox.</p>
+</footer>
 
-  <section>
-    <h2>api</h2>
-    <table>
-      <tr><th>exported</th><th>type</th><th>notes</th></tr>
-      <tr><td><code>sprite_frames</code></td><td>SpriteFrames</td><td>atlas with the frames</td></tr>
-      <tr><td><code>animation</code></td><td>StringName</td><td>active animation</td></tr>
-      <tr><td><code>autoplay</code></td><td>StringName</td><td>animation to start on ready</td></tr>
-      <tr><td><code>frame</code></td><td>int</td><td>current frame</td></tr>
-      <tr><td><code>playing</code></td><td>bool</td><td>play / pause</td></tr>
-      <tr><td><code>speed_scale</code></td><td>float</td><td>playback speed multiplier</td></tr>
-      <tr><th colspan="3">methods</th></tr>
-      <tr><td><code>play(name)</code></td><td colspan="2">start an animation from frame 0</td></tr>
-      <tr><td><code>stop()</code></td><td colspan="2">stop and reset to frame 0</td></tr>
-      <tr><td><code>pause()</code></td><td colspan="2">pause on the current frame</td></tr>
-      <tr><td><code>is_playing()</code></td><td colspan="2">is it running?</td></tr>
-      <tr><td><code>get_animation_list()</code></td><td colspan="2">names of all animations</td></tr>
-      <tr><th colspan="3">signals</th></tr>
-      <tr><td><code>animation_finished(name)</code></td><td colspan="2">fires when a non-looping animation ends</td></tr>
-    </table>
-  </section>
-
-  <footer>
-    <p>open source — <a href="https://github.com/RowerStudios/animated-ninepatch-rect">see it on github</a> · <a href="policy.html">privacy policy</a>.</p>
-  </footer>
-
+<center>
+     <p><a href="https://github.com/RowerStudios/Grace-RE-Envisioned/blob/main/TOS.md">Terms and conditions</a></p>
+<center>
+<center>
+     <p><a href="https://github.com/RowerStudios/Grace-RE-Envisioned/blob/main/PRIVACY%20%26%20POLICY.md">Privacy & Policy</a></p>
+<center>
 </body>
 </html>

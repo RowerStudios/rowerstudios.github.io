@@ -1,0 +1,142 @@
+
+:root {
+    --bg: #111111;
+    --text: #dddddd;
+    --text-soft: #999999;
+    --link: #8a8ad8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+h1,
+h2 {
+    font-family: "Rubik Maze", "Rubik", sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text);
+    text-shadow: none;
+}
+
+header {
+    padding: 3.5rem 1.5rem 0.5rem;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2.4rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+nav a {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-soft);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+nav a:hover {
+    color: var(--link);
+}
+
+nav a.youtube:hover {
+    color: #ff0000;
+}
+
+nav a.discord:hover {
+    color: #5865f2;
+}
+
+nav a.itchio:hover {
+    color: #fa5c5c;
+}
+
+nav a.github:hover {
+    color: #ffffff;
+}
+
+main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 3rem;
+}
+
+section {
+    margin-bottom: 2.5rem;
+}
+
+h2 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+}
+
+p {
+    font-family: "Rubik Spray", "Rubik", sans-serif;
+    color: var(--text-soft);
+    margin-bottom: 0.85rem;
+    -webkit-text-stroke: 0.5px var(--text-soft);
+}
+
+.danger {
+    color: #ff3b3b;
+    -webkit-text-stroke: 0.5px #ff3b3b;
+    font-weight: 600;
+}
+
+.brand {
+    color: #ffffff;
+    -webkit-text-stroke: 0.5px #ffffff;
+    font-weight: 600;
+}
+
+.section a {
+    color: #6ea8ff;
+    text-decoration: underline;
+    -webkit-text-stroke: 0px;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+a {
+    color: var(--link);
+}
+
+code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.92em;
+}
+
+footer {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 3rem;
+}
+
+footer p {
+    font-size: 0.85rem;
+    color: #777;
+}
